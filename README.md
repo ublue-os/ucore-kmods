@@ -4,23 +4,25 @@
 
 A layer for adding extra kernel modules to your Fedora CoreOS image.
 
-# Usage
-
-Add this to your Containerfile to install all the RPM packages, replacing `RELEASE` with either `stable` or `testing`:
-
-    COPY --from=ghcr.io/ublue-os/ucore-kmods:RELEASE /rpms/ /tmp/rpms
-    RUN rpm-ostree install /tmp/rpms/kmods/*.rpm
-
-This example shows:
-1. copying all the rpms from the `ucore-kmods` image
-2. installing the kmods RPMs, providing the actual kmods built in this repo
-
-
 # Features
 
 Feel free to PR more kmod build scripts into this repo!
 
 - [zfs](https://github.com/openzfs/zfs) - OpenZFS advanced file system and volume manager
+
+
+# Usage
+
+Add this to your Containerfile to install ZFS RPM packages, replacing `RELEASE` with either `stable` or `testing`:
+
+    COPY --from=ghcr.io/ublue-os/ucore-kmods:RELEASE /rpms/ /tmp/rpms
+    RUN rpm-ostree install /tmp/rpms/kmods/zfs/*.rpm
+
+This example shows:
+1. copying all the rpms from the `ucore-kmods` image into an image temp directory
+2. installing the normal (not debug/src/devel/other) zfs RPMs which were built in this repo
+
+Note: inspect the build logs or image filesystem to see the extra ZFS RPMS provided.
 
 
 # Adding kmods
