@@ -77,7 +77,7 @@ jobs:
       - name: Get current versions
         id: labels
         run: |
-          skopeo inspect docker://quay.io/fedora-ostree-desktops/${{ env.SOURCE_IMAGE }}:${{ matrix.coreos_version }} > inspect.json
+          skopeo inspect docker://quay.io/fedora/${{ env.SOURCE_IMAGE }}:${{ matrix.coreos_version }} > inspect.json
           version=$(jq -r '.Labels["org.opencontainers.image.version"]' inspect.json)
           linux=$(jq -r '.Labels["ostree.linux"]' inspect.json)
           echo "VERSION=$version" >> $GITHUB_OUTPUT
