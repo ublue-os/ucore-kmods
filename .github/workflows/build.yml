@@ -3,7 +3,7 @@ on:
   pull_request:
   merge_group:
   schedule:
-    - cron: '0 6 * * *'  # 6am everyday (1h after 'config')
+    - cron: '15 23 * * *' # 11:15PM UTC everyday (approx 1 hours after coreos images publish)
   workflow_dispatch:
 env:
     IMAGE_NAME: ucore-kmods
