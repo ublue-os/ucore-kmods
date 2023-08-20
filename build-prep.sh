@@ -39,6 +39,7 @@ rpm-ostree install \
 # stuff for akmods
 rpm-ostree install \
     akmods \
+    dnf \
     mock
 
 # stuff for dkms
