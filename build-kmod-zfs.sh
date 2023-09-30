@@ -11,8 +11,8 @@ cd /tmp
 
 # Use cURL to fetch the given URL, saving the response to `data.json`
 curl "https://api.github.com/repos/openzfs/zfs/releases" -o data.json
-ZFS_VERSION=$(jq -r '[ .[] | select(.prerelease==false and .draft==false) ][0].name' data.json|cut -f2- -d-)
-ZFS_PREVIOUS=$(jq -r '[ .[] | select(.prerelease==false and .draft==false) ][1].name' data.json|cut -f2- -d-)
+ZFS_VERSION=$(jq -r '[ .[] | select(.prerelease==false and .draft==false) ][0].tag_name' data.json|cut -f2- -d-)
+ZFS_PREVIOUS=$(jq -r '[ .[] | select(.prerelease==false and .draft==false) ][1].tag_name' data.json|cut -f2- -d-)
 
 ### zfs specific build deps
 rpm-ostree install libtirpc-devel libblkid-devel libuuid-devel libudev-devel openssl-devel zlib-devel libaio-devel libattr-devel elfutils-libelf-devel python3-devel libffi-devel libcurl-devel
