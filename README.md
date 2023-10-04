@@ -8,7 +8,7 @@ A layer for adding extra kernel modules to your Fedora CoreOS image.
 
 Feel free to PR more kmod build scripts into this repo!
 
-- nvidia - driver version 470 and 535 built from rpmfusion akmods
+- [nvidia](https://negativo17.org/nvidia-driver) - latest driver (currently version 535) built from negativo17's akmod package
 - ublue-os-ucore-nvidia - RPM with nvidia container runtime repo and selinux policy
 - [zfs](https://github.com/openzfs/zfs) - OpenZFS advanced file system and volume manager
 
