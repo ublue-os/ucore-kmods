@@ -9,7 +9,9 @@ A layer for adding extra kernel modules to your Fedora CoreOS image.
 Feel free to PR more kmod build scripts into this repo!
 
 - [nvidia](https://negativo17.org/nvidia-driver) - latest driver (currently version 535) built from negativo17's akmod package
-- ublue-os-ucore-nvidia - RPM with nvidia container runtime repo and selinux policy
+- ublue-os-ucore-nvidia - RPM with nvidia container toolkit repo and selinux policy
+    - [nvidia container selinux policy](https://github.com/NVIDIA/dgx-selinux/tree/master/src/nvidia-container-selinux) - uses RHEL9 policy as the closest match
+    - [nvidia-container-tookkit repo](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-with-yum-or-dnf) - version 1.14.2 (and newer) provide CDI for podman use of nvidia gpus
 - [zfs](https://github.com/openzfs/zfs) - OpenZFS advanced file system and volume manager
 
 
