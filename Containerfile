@@ -15,9 +15,7 @@ ADD ublue-os-ucore-nvidia.spec \
 
 RUN /tmp/build-prep.sh
 
-RUN /tmp/build-kmod-nvidia.sh 470
-RUN /tmp/build-kmod-nvidia.sh 535
-RUN cd /var/cache/rpms/kmods/nvidia; ln -s 535 latest; cd /
+RUN /tmp/build-kmod-nvidia.sh
 RUN /tmp/build-ublue-nvidia.sh
 RUN /tmp/build-kmod-zfs.sh
 

@@ -9,11 +9,9 @@ RELEASE="$(rpm -E '%fedora')"
 
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
 
-mkdir /tmp/rpms
-curl -sL --output-dir /tmp/rpms --remote-name \
-    https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-${RELEASE}.noarch.rpm
-curl -sL --output-dir /tmp/rpms --remote-name \
-    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${RELEASE}.noarch.rpm
+# repo for nvidia builds
+curl -sL --output-dir /etc/yum.repos.d --remote-name \
+    https://negativo17.org/repos/fedora-nvidia.repo
 
 # enable testing repos if not enabled on testing stream
 if [[ "testing" == "${COREOS_VERSION}" ]]; then
@@ -31,7 +29,6 @@ mkdir -p /var/lib/alternatives
 
 find /tmp/
 rpm-ostree install \
-    /tmp/rpms/*.rpm \
     fedora-repos-archive
 
 
