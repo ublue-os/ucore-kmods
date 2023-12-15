@@ -20,7 +20,7 @@ RUN /tmp/build-prep.sh
 
 RUN /tmp/build-ublue-nvidia.sh
 RUN /tmp/build-kmod-nvidia.sh
-RUN ZFS_MINOR_VERSION=2.1 /tmp/build-kmod-zfs.sh
+RUN ZFS_MINOR_VERSION=2.2 /tmp/build-kmod-zfs.sh
 
 RUN for RPM in $(find /var/cache/akmods/ -type f -name \*.rpm); do \
         cp "${RPM}" /var/cache/rpms/kmods/; \
