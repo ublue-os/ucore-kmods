@@ -12,7 +12,7 @@ Feel free to PR more kmod build scripts into this repo!
 - ublue-os-ucore-nvidia - RPM with nvidia container toolkit repo and selinux policy
     - [nvidia container selinux policy](https://github.com/NVIDIA/dgx-selinux/tree/master/src/nvidia-container-selinux) - uses RHEL9 policy as the closest match
     - [nvidia-container-tookkit repo](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-with-yum-or-dnf) - version 1.14.2 (and newer) provide CDI for podman use of nvidia gpus
-- [zfs](https://github.com/openzfs/zfs) - OpenZFS advanced file system and volume manager *(currently pinned to 2.1 release series)*
+- [zfs](https://github.com/openzfs/zfs) - OpenZFS advanced file system and volume manager *(currently pinned to 2.2 release series)*
 
 
 # Usage
