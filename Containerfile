@@ -8,6 +8,9 @@ ARG COREOS_VERSION="${COREOS_VERSION:-stable}"
 
 COPY build*.sh /tmp
 COPY certs /tmp/certs
+
+ADD ublue-os-ucore-addons.spec \
+        /tmp/ublue-os-ucore-addons/ublue-os-ucore-addons.spec
 ADD ublue-os-ucore-nvidia.spec \
         /tmp/ublue-os-ucore-nvidia/ublue-os-ucore-nvidia.spec
 ADD files/usr/lib/systemd/system/ublue-nvctk-cdi.service \
@@ -18,7 +21,8 @@ ADD files/usr/lib/systemd/system-preset/70-ublue-nvctk-cdi.preset \
 
 RUN /tmp/build-prep.sh
 
-RUN /tmp/build-ublue-nvidia.sh
+RUN /tmp/build-ucore-addons.sh
+RUN /tmp/build-ucore-nvidia.sh
 RUN /tmp/build-kmod-nvidia.sh
 RUN ZFS_MINOR_VERSION=2.2 /tmp/build-kmod-zfs.sh
 

@@ -4,8 +4,6 @@ set -oeux pipefail
 
 ### SETUP nvidia container stuffs
 
-#install -D /etc/pki/akmods/certs/public_key.der /tmp/ublue-os-ucore-nvidia/rpmbuild/SOURCES/public_key.der
-
 mkdir -p /tmp/ublue-os-ucore-nvidia/rpmbuild/SOURCES/
 
 curl -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo \
