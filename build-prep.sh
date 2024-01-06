@@ -5,6 +5,7 @@ set -oeux pipefail
 
 ### PREPARE REPOS
 ARCH="$(rpm -E '%_arch')"
+KERNEL="$(rpm -q kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
 RELEASE="$(rpm -E '%fedora')"
 
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-cisco-openh264.repo
@@ -56,6 +57,9 @@ fi
 
 install -Dm644 /tmp/certs/public_key.der   /etc/pki/akmods/certs/public_key.der
 install -Dm644 /tmp/certs/private_key.priv /etc/pki/akmods/private/private_key.priv
+
+install -Dm644 /tmp/certs/public_key.der /lib/modules/${KERNEL}/build/certs/signing_key.x509
+install -Dm644 /tmp/certs/private_key.priv /lib/modules/${KERNEL}/build/certs/signing_key.pem
 
 # protect against incorrect permissions in tmp dirs which can break akmods builds
 chmod 1777 /tmp /var/tmp

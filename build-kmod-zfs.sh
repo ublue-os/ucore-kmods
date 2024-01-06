@@ -27,11 +27,12 @@ echo "getting zfs-${ZFS_VERSION}.tar.gz"
 curl -L -O https://github.com/openzfs/zfs/releases/download/zfs-${ZFS_VERSION}/zfs-${ZFS_VERSION}.tar.gz
 tar xzf zfs-${ZFS_VERSION}.tar.gz
 
+patch  -b -uN -i zfs-kmod-spec-in.patch zfs-${ZFS_VERSION}/rpm/generic/zfs-kmod.spec.in
 cd /tmp/zfs-${ZFS_VERSION}
 ./configure \
         -with-linux=/usr/src/kernels/${KERNEL}/ \
         -with-linux-obj=/usr/src/kernels/${KERNEL}/ \
-    && make -j 1 rpm-utils rpm-kmod \
+    && make -j $(nproc) rpm-utils rpm-kmod \
     || (cat config.log && exit 1)
 
 
