@@ -8,6 +8,7 @@ ARG COREOS_VERSION="${COREOS_VERSION:-stable}"
 
 COPY build*.sh /tmp
 COPY certs /tmp/certs
+COPY zfs-kmod-spec-in.patch /tmp
 
 ADD ublue-os-ucore-addons.spec \
         /tmp/ublue-os-ucore-addons/ublue-os-ucore-addons.spec
