@@ -5,6 +5,7 @@ ARG COREOS_VERSION="${COREOS_VERSION:-stable}"
 
 FROM ${BASE_IMAGE}:${COREOS_VERSION} AS builder
 ARG COREOS_VERSION="${COREOS_VERSION:-stable}"
+ARG ZFS_MINOR_VERSION="${ZFS_MINOR_VERSION:-2.2}"
 
 COPY build*.sh /tmp
 COPY certs /tmp/certs
@@ -25,7 +26,7 @@ RUN /tmp/build-prep.sh
 RUN /tmp/build-ucore-addons.sh
 RUN /tmp/build-ucore-nvidia.sh
 RUN /tmp/build-kmod-nvidia.sh
-RUN ZFS_MINOR_VERSION=2.2 /tmp/build-kmod-zfs.sh
+RUN /tmp/build-kmod-zfs.sh
 
 RUN for RPM in $(find /var/cache/akmods/ -type f -name \*.rpm); do \
         cp "${RPM}" /var/cache/rpms/kmods/; \
