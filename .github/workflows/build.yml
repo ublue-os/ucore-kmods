@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        coreos_version: [stable, testing]
+        coreos_version: [stable]
     steps:
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
