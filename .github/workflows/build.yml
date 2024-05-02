@@ -137,7 +137,7 @@ jobs:
             SOURCE_IMAGE=${{ env.SOURCE_IMAGE }}
             COREOS_VERSION=${{ matrix.coreos_version }}
           labels: ${{ steps.meta.outputs.labels }}
-          tags: ${{ steps.meta.outputs.tags}
+          tags: ${{ steps.meta.outputs.tags }}
           
       # Sign container
       - uses: sigstore/cosign-installer@v3.1.1
