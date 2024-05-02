@@ -69,7 +69,7 @@ jobs:
               echo "${TAG}"
           done)
           echo "BUILDX_TAGS<<EOF" >> $GITHUB_ENV
-          echo $BUILDX_TAGS >> $GITHUB_ENV
+          echo "$BUILDX_TAGS" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
       - name: Retrieve akmods signing key
