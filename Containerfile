@@ -8,7 +8,7 @@ ARG COREOS_VERSION="${COREOS_VERSION:-stable}"
 ARG ZFS_MINOR_VERSION="${ZFS_MINOR_VERSION:-2.2}"
 
 # workaround older podman/ubuntu which breaks file ops with F40 images
-COPY tar-hack*.sh /tmp
+COPY tar*.sh /tmp
 RUN /tmp/tar-hack-setup.sh
 
 COPY build*.sh /tmp
