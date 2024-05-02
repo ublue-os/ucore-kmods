@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 echo "`tar` was called with these options: $@"
 exit 20

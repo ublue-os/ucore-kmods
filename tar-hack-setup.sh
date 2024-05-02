@@ -1,4 +1,4 @@
-#!/usr/bin/evn bash
+#!/usr/bin/bash
 
 set -oeux pipefail
 
