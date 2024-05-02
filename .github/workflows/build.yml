@@ -63,6 +63,13 @@ jobs:
 
           echo "alias_tags=${alias_tags[*]}" >> $GITHUB_OUTPUT
 
+          # in addition to existing tag logic, add docker-buildx friendly tags
+          echo "BUILDX_TAGS<<EOF" >> $GITHUB_ENV
+          for TAG in "${BUILD_TAGS[@]}"; do
+              echo "type=raw,value=${TAG}" >> $GITHUB_ENV
+          done
+          echo "EOF" >> $GITHUB_ENV
+
       - name: Retrieve akmods signing key
         run: |
           mkdir -p certs
@@ -122,7 +129,7 @@ jobs:
           context: .
           file: ./Containerfile
           tags: |
-            ${{ steps.generate-tags.outputs.alias_tags }}
+            ${{ env.BUILDX_TAGS }}
           build-args: |
             SOURCE_IMAGE=${{ env.SOURCE_IMAGE }}
             COREOS_VERSION=${{ matrix.coreos_version }}
