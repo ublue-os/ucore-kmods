@@ -25,7 +25,8 @@ rpm-ostree install libtirpc-devel libblkid-devel libuuid-devel libudev-devel ope
 ### BUILD zfs
 echo "getting zfs-${ZFS_VERSION}.tar.gz"
 curl -L -O https://github.com/openzfs/zfs/releases/download/zfs-${ZFS_VERSION}/zfs-${ZFS_VERSION}.tar.gz
-tar xzf zfs-${ZFS_VERSION}.tar.gz
+# no-same-owner/no-same-permissions required for F40 based images building on podman 3.4.4 (ubuntu 22.04)
+tar -z -x --no-same-owner --no-same-permissions -f zfs-${ZFS_VERSION}.tar.gz
 
 # patch the zfs-kmod.spec.in file for older zfs versions
 ZFS_MAJ=$(echo $ZFS_VERSION | cut -f1 -d.)
