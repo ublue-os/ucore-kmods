@@ -65,7 +65,7 @@ jobs:
 
           # in addition to existing tag logic, add docker-buildx friendly tags
           BUILDX_TAGS=$(
-          for TAG in "${BUILD_TAGS[@]}"; do
+          for TAG in "${alias_tags[@]}"; do
               echo "${TAG}"
           done)
           echo "BUILDX_TAGS<<EOF" >> $GITHUB_ENV
