@@ -64,11 +64,12 @@ jobs:
           echo "alias_tags=${alias_tags[*]}" >> $GITHUB_OUTPUT
 
           # in addition to existing tag logic, add docker-buildx friendly tags
-          echo "BUILDX_TAGS<<EOF" >> $GITHUB_ENV
-          for TAG in "${BUILD_TAGS[@]}"; do
-              echo "type=raw,value=${TAG}" >> $GITHUB_ENV
-          done
-          echo "EOF" >> $GITHUB_ENV
+          # multiline var trick from https://github.com/orgs/community/discussions/26288
+          BUILDX_TAGS=${alias_tags[*]}"
+          BUILDX_TAGS="${BUILDX_TAGS//'%'/'%25'}"
+          BUILDX_TAGS="${BUILDX_TAGS//$'\n'/'%0A'}"
+          BUILDX_TAGS="${BUILDX_TAGS//$'\r'/'%0D'}"
+          echo "::set-env name=BUILDX_TAGS::$BUILDX_TAGS"
 
       - name: Retrieve akmods signing key
         run: |
