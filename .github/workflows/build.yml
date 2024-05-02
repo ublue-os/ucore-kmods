@@ -65,7 +65,7 @@ jobs:
 
           # in addition to existing tag logic, add docker-buildx friendly tags
           # multiline var trick from https://github.com/orgs/community/discussions/26288
-          BUILDX_TAGS=${alias_tags[*]}"
+          BUILDX_TAGS="${alias_tags[*]}"
           BUILDX_TAGS="${BUILDX_TAGS//'%'/'%25'}"
           BUILDX_TAGS="${BUILDX_TAGS//$'\n'/'%0A'}"
           BUILDX_TAGS="${BUILDX_TAGS//$'\r'/'%0D'}"
