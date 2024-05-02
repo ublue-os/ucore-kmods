@@ -27,9 +27,9 @@ ADD files/usr/lib/systemd/system-preset/70-ublue-nvctk-cdi.preset \
 
 RUN /tmp/build-prep.sh
 
-RUN /tmp/build-ucore-addons.sh
-RUN /tmp/build-ucore-nvidia.sh
-RUN /tmp/build-kmod-nvidia.sh
+#RUN /tmp/build-ucore-addons.sh
+#RUN /tmp/build-ucore-nvidia.sh
+#RUN /tmp/build-kmod-nvidia.sh
 RUN /tmp/build-kmod-zfs.sh
 
 RUN for RPM in $(find /var/cache/akmods/ -type f -name \*.rpm); do \
