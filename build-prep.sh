@@ -32,6 +32,9 @@ find /tmp/
 rpm-ostree install \
     fedora-repos-archive
 
+# required for some kernel-devel packages
+curl -L -o /etc/yum.repos.d/fedora-coreos-pool.repo \
+    https://raw.githubusercontent.com/coreos/fedora-coreos-config/testing-devel/fedora-coreos-pool.repo
 
 ### PREPARE BUILD ENV
 # stuff for akmods
@@ -48,6 +51,9 @@ rpm-ostree install \
     git \
     libtool \
     ncompress
+
+# remove after installing kernel-devel packages
+rm -f /etc/yum.repos.d/fedora-coreos-pool.repo
 
 if [[ ! -s "/tmp/certs/private_key.priv" ]]; then
     echo "WARNING: Using test signing key. Run './generate-akmods-key' for production builds."
