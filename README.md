@@ -2,6 +2,8 @@
 
 # ublue-os ucore-kmods
 
+## Everything once built here is now built in the ublue consolidated kmod repo: https://github.com/ublue-os/akmods
+
 A layer for adding extra kernel modules to your Fedora CoreOS image.
 
 # Features
